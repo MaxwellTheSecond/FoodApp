@@ -1,21 +1,18 @@
 
-using Day1Speedrun.Services;
+using dog.Services;
 
-namespace Day1Speedrun
+
+namespace numeste_l_cum_vrei_2
 {
     public class Startup
     {
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            ConfigureServices(builder.Services);
             // Add services to the container.
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddSingleton<FoodService>();
+
 
             var app = builder.Build();
 
@@ -35,5 +32,15 @@ namespace Day1Speedrun
 
             app.Run();
         }
+
+        public static void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+            services.AddSingleton<DogService>();
+        }
+
     }
 }
+
